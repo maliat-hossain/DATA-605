@@ -1,0 +1,34 @@
+---
+title: "Discussion 1 Data 605"
+author: "Maliat Islam"
+date: "8/29/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r}
+(trailmix <- matrix(c(7,6,2,6,4,5,2,5,8),nrow=3,ncol=3))
+```
+
+```{r}
+(trailmix_batch <- trailmix/15)
+```
+```{r}
+(cost <-matrix(c(2.55,4.65,4.80),nrow=3,ncol=1))
+```
+```{r}
+trailmix_cost <- trailmix_batch %*% cost
+result <- data.frame(trailmix_cost)
+result <- cbind(c("bulk", "standard", "fancy"),result)
+```
+
+```{r}
+result
+
+```
+
