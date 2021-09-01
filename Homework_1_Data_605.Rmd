@@ -1,0 +1,138 @@
+---
+title: "Homework 1"
+author: "Maliat Islam"
+date: "8/29/2021"
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r}
+
+library(animation)
+```
+
+### For this assignment, build the first letters for both your first and last name using point plots in R.  For example, the following code builds an H.
+
+```{r creates an H}
+par(mar=rep(4,4))
+x=c(rep(0,500),seq(0,1,length.out=1000), rep(1,500))
+y=c(seq(-1,1,length.out=500),rep(0,1000), seq(-1,1,length.out=500))
+z=rbind(x,y)
+plot(y~x, xlim=c(-3,3), ylim=c(-3,3))
+```
+### creating M
+
+```{r creates a M}
+
+x = c(rep(0, 1000), seq(0, 1, length.out = 700), seq(1, 2, length.out = 700), rep(2, 1000))
+
+y = c(seq(-1, 1, length.out = 1000), seq(1, 0, length.out = 700), seq(0, 1, length.out = 700), seq(1, -1, length.out = 1000))
+
+z = rbind(x, y)
+plot(y~x, xlim=c(-3,3), ylim=c(-3,3))
+
+```
+
+
+
+
+
+### Then, write R code that will left multiply (%>%) a square matrix (x) against each of the vectors of points (y). Initially, that square matrix will be the Identity matrix.Use a loop that changes the transformation matrix incrementally to demonstrate 1) shear, 2) scaling, 3)  rotation , and 4) projection in animated fashion.  
+```{r}
+a=diag(2)
+x11()
+for (i in seq(-3,3, length.out=50)){
+  a[1,1]=i
+  tran=apply(z,2,function(x) a%*%x)
+  plot (tran[2,] ~ tran[1,], xlim=c(-3,3), ylim=c(-3,3))
+  ani.record()
+  #Sys.sleep(1)
+}
+a=diag(2)
+for (i in seq(-3,3, length.out=50)){
+  a[-1,-1]=i
+  tran=apply(z,2,function(x) a%*%x)
+  plot (tran[2,] ~ tran[1,], xlim=c(-3,3), ylim=c(-3,3))
+  ani.record()
+  #Sys.sleep(1)
+}
+#Shearing horizontally
+a=diag(2)
+for (i in seq(-3,3, length.out=50)){
+  a[1,2]=i
+  tran=apply(z,2,function(x) a%*%x)
+  plot (tran[2,] ~ tran[1,], xlim=c(-3,3), ylim=c(-3,3))
+  ani.record()
+  #Sys.sleep(1)  
+}
+#Shearing vertically
+a=diag(2)
+for (i in seq(-3,3, length.out=50)){
+  a[2,1]=i
+  tran=apply(z,2,function(x) a%*%x)
+  plot (tran[2,] ~ tran[1,], xlim=c(-3,3), ylim=c(-3,3))
+  ani.record()
+  #Sys.sleep(1)  
+}
+```
+
+
+## Creating I
+
+```{r creates an I}
+x=c(rep(1,500),seq(1,1,length.out=1000), rep(1,500))
+y=c(seq(-1,1,length.out=500),rep(0,1000), seq(-1,1,length.out=500))
+z=rbind(x,y)
+plot(y~x, xlim=c(-3,3), ylim=c(-3,3))
+
+```
+### Then, write R code that will left multiply (%>%) a square matrix (x) against each of the vectors of points (y). Initially, that square matrix will be the Identity matrix.Use a loop that changes the transformation matrix incrementally to demonstrate 1) shear, 2) scaling, 3)  rotation , and 4) projection in animated fashion. 
+
+```{r}
+a=diag(2)
+x11()
+for (i in seq(-3,3, length.out=50)){
+  a[1,1]=i
+  tran=apply(z,2,function(x) a%*%x)
+  plot (tran[2,] ~ tran[1,], xlim=c(-3,3), ylim=c(-3,3))
+  ani.record()
+  #Sys.sleep(1)
+}
+a=diag(2)
+for (i in seq(-3,3, length.out=50)){
+  a[-1,-1]=i
+  tran=apply(z,2,function(x) a%*%x)
+  plot (tran[2,] ~ tran[1,], xlim=c(-3,3), ylim=c(-3,3))
+  ani.record()
+  #Sys.sleep(1)
+}
+#Shearing horizontally
+a=diag(2)
+for (i in seq(-3,3, length.out=50)){
+  a[1,2]=i
+  tran=apply(z,2,function(x) a%*%x)
+  plot (tran[2,] ~ tran[1,], xlim=c(-3,3), ylim=c(-3,3))
+  ani.record()
+  #Sys.sleep(1)  
+}
+#Shearing vertically
+a=diag(2)
+for (i in seq(-3,3, length.out=50)){
+  a[2,1]=i
+  tran=apply(z,2,function(x) a%*%x)
+  plot (tran[2,] ~ tran[1,], xlim=c(-3,3), ylim=c(-3,3))
+  ani.record()
+  #Sys.sleep(1)  
+}
+```
+
+
+
+
